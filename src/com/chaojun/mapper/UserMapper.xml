@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+ <mapper namespace="a.b">
+ 	<select id="selByCODE" parameterType="long" resultType="User">
+ 		select * from subcopapi where CODE=#{0}
+ 	</select>
+ 	<select id="selAll" resultType="User">
+ 		select * from subcopapi
+ 	</select>
+ 	
+ 	<select id="updataOne" parameterType="User" resultType="int">
+ 		update subcopapi set method=#{method} where CODE=#{CODE}
+ 	</select>
+ 	
+ 	
+ 	<select id="selByCODE10" parameterType="long" resultType="User10">
+ 		select * from subcopapi10 where CODE=#{0}
+ 	</select>
+ 	<select id="selAll10" resultType="User10">
+ 		select * from subcopapi10
+ 	</select>
+ 	
+ 	<select id="updataOne10" parameterType="User10" resultType="int">
+ 		update subcopapi10 set method=#{method} where CODE=#{CODE}
+ 	</select>
+</mapper>
