@@ -10,7 +10,7 @@ import com.chaojun.pojo.User10;
 import com.chaojun.service.LoginService;
 import com.chaojun.service.LoginServiceImpl;
 
-public class Flag2 {
+public class Flag2 implements Runnable{
 	public static double mean(int[] x) { 
 		int m=x.length;
 		double sum=0;
@@ -34,7 +34,7 @@ public class Flag2 {
 		}
 		return Math.sqrt(dVar/m);	
 	}
-	public static void main(String[] args) {
+	public static void culflag() {
 		LoginService ls=new LoginServiceImpl();
 		List<User10> list=ls.selAll10();
 		List<User10> list2=new ArrayList<User10>();
@@ -43,11 +43,14 @@ public class Flag2 {
 			list2.add(u);
 			}
 		}
+		double []biaozhunchaarr=new double[4];
 		double biaozhuncha;
+		double []meanarr=new double[4];
 		double mean;
 		int []arr1=new int[list2.size()];
 		int bound=(int) Math.round(list2.size()*0.27);
-		
+		//保存界限的数组
+		double []scorearr=new double[4];
 		//1.查看冲动性PD6_S的数据
 		Collections.sort(list2,new Comparator<User10>() {
 			@Override
@@ -63,6 +66,10 @@ public class Flag2 {
 		//数组标准查和均值
 		biaozhuncha=StandardDiviation(arr1);
 		mean=mean(arr1);
+		biaozhunchaarr[0]=biaozhuncha;
+		meanarr[0]=mean;
+		//给需要保存的数组赋值边界信息,第i个--》冲动
+				scorearr[0]=arr1[bound];
 		//计算是否有标签，有标签set标准化的值
 		for(int i=0;i<list2.size();i++) {
 			if(list2.get(i).getPD6_S()>=arr1[bound]) {
@@ -84,9 +91,13 @@ public class Flag2 {
 		for(int i=0;i<list2.size();i++) {
 			arr1[i]=list2.get(i).getPD3_S();
 		}
+		//给需要保存的数组赋值边界信息,第i个--》共情
+				scorearr[1]=arr1[bound];
 		//数组标准查和均值
 		biaozhuncha=StandardDiviation(arr1);
 		mean=mean(arr1);
+		biaozhunchaarr[1]=biaozhuncha;
+		meanarr[1]=mean;
 		//计算是否有标签，有标签set标准化的值
 		for(int i=0;i<list2.size();i++) {
 			if(list2.get(i).getPD3_S()>=arr1[bound]) {
@@ -107,9 +118,13 @@ public class Flag2 {
 		for(int i=0;i<list2.size();i++) {
 			arr1[i]=list2.get(i).getPD11_S();
 		}
+		//给需要保存的数组赋值边界信息,第i个--》情绪
+				scorearr[2]=arr1[bound];
 		//数组标准查和均值
 		biaozhuncha=StandardDiviation(arr1);
 		mean=mean(arr1);
+		biaozhunchaarr[2]=biaozhuncha;
+		meanarr[2]=mean;
 		//计算是否有标签，有标签set标准化的值
 		for(int i=0;i<list2.size();i++) {
 			if(list2.get(i).getPD11_S()>=arr1[bound]) {
@@ -131,9 +146,13 @@ public class Flag2 {
 		for(int i=0;i<list2.size();i++) {
 			arr1[i]=list2.get(i).getPD12_S();
 		}
+		//给需要保存的数组赋值边界信息,第i个--》
+				scorearr[3]=arr1[bound];
 		//数组标准查和均值
 		biaozhuncha=StandardDiviation(arr1);
 		mean=mean(arr1);
+		biaozhunchaarr[3]=biaozhuncha;
+		meanarr[3]=mean;
 		//计算是否有标签，有标签set标准化的值
 		for(int i=0;i<list2.size();i++) {
 			if(list2.get(i).getPD12_S()>=arr1[bound]) {
@@ -191,8 +210,19 @@ public class Flag2 {
 			}else {
 				u.setMethod("无");
 			}
-			ls.updataOne10(u);
+//			ls.updataOne10(u);
 		}
+		Flag.write("/tmp/arr2.txt", scorearr);
+		Flag.write("/tmp/biaozhunchaarr2.txt",biaozhunchaarr);
+		Flag.write("/tmp/meanarr.txt2",meanarr);
 		System.out.println(i0+","+i1+","+i2+","+i3+","+i4);
+	}
+	public static void main(String[] args) {
+		Flag2.culflag();
+	}
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		Flag2.culflag();
 	}
 }

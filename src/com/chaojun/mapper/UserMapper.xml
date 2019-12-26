@@ -5,25 +5,39 @@
     
  <mapper namespace="a.b">
  	<select id="selByCODE" parameterType="long" resultType="User">
+ 		select * from newsubcopapi where CODE=#{0}
+ 	</select>
+ 	
+ 	<select id="selOldByCODE" parameterType="long" resultType="User">
  		select * from subcopapi where CODE=#{0}
  	</select>
+ 	
  	<select id="selAll" resultType="User">
- 		select * from subcopapi
+ 		select * from newsubcopapi
  	</select>
  	
  	<select id="updataOne" parameterType="User" resultType="int">
- 		update subcopapi set method=#{method} where CODE=#{CODE}
+ 		update newsubcopapi set method=#{method} where CODE=#{CODE}
  	</select>
- 	
+ 	<select id="insertCopa" parameterType="User" resultType="int">
+ 		insert into newsubcopapi (CODE,method)values(#{CODE},#{method})
+ 	</select>
+ 	<select id="insertCopa10" parameterType="User10" resultType="int">
+ 		insert into newsubcopapi10 (CODE,method)values(#{CODE},#{method})
+ 	</select>
  	
  	<select id="selByCODE10" parameterType="long" resultType="User10">
+ 		select * from newsubcopapi10 where CODE=#{0}
+ 	</select>
+ 	<select id="selOldByCODE10" parameterType="long" resultType="User10">
  		select * from subcopapi10 where CODE=#{0}
  	</select>
+ 	
  	<select id="selAll10" resultType="User10">
- 		select * from subcopapi10
+ 		select * from newsubcopapi10
  	</select>
  	
  	<select id="updataOne10" parameterType="User10" resultType="int">
- 		update subcopapi10 set method=#{method} where CODE=#{CODE}
+ 		update newsubcopapi10 set method=#{method} where CODE=#{CODE}
  	</select>
 </mapper>

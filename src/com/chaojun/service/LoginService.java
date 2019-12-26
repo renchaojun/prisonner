@@ -19,10 +19,21 @@ public interface LoginService {
 	List<User10> selAll10();
 	int updataOne10(User10 u);
 	
+	//查旧表
+	User selOldByCODE(long CODE);
+	User10 selOld10ByCODE(long CODE);
+	
+	
 	Info selByInfo(Info info);
 	List<KaoheTable> selByBianhao1(Info info);
 	NaturalInfo selByBianhao2(Info info);
-	
+	//设置id
 	Set selIds();
 	Huanhuan selId(long CODE);
+	//创建新的表
+	int creatTableCopa();
+	int creatTableCopa10();
+	
+	int insertCopa(User u);
+	int insertCopa10(User10 u) ;
 }

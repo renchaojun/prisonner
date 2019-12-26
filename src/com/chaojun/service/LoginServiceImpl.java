@@ -72,4 +72,34 @@ public class LoginServiceImpl implements LoginService{
 		LoginServiceImpl l=new LoginServiceImpl();
 		l.selId(1);
 	}
+	@Override
+	public int creatTableCopa() {
+		// TODO Auto-generated method stub
+		return ld.creatTableCopa();
+	}
+	@Override
+	public int creatTableCopa10() {
+		// TODO Auto-generated method stub
+		return ld.creatTableCopa10();
+	}
+	@Override
+	public User selOldByCODE(long CODE) {
+		// TODO Auto-generated method stub
+		return ld.selOldByCODE(CODE);
+	}
+	@Override
+	public User10 selOld10ByCODE(long CODE) {
+		// TODO Auto-generated method stub
+		return ld.selByCODE10(CODE);
+	}
+	@Override
+	public int insertCopa(User u) {
+		// TODO Auto-generated method stub
+		return ld.insertCopa(u);
+	}
+	@Override
+	public int insertCopa10(User10 u) {
+		// TODO Auto-generated method stub
+		return ld.insertCopa10(u);
+	}
 }

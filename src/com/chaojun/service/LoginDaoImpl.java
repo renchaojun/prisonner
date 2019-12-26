@@ -163,5 +163,116 @@ public class LoginDaoImpl<E> implements LoginDao{
 		session.close();
 		return p;
 	}
-	
+
+	@Override
+	public int creatTableCopa() {
+		SqlSession session = factory.openSession();
+		Connection cnn=session.getConnection();
+		PreparedStatement ps=null;
+		PreparedStatement ps2=null;
+		PreparedStatement ps3=null;
+		PreparedStatement ps4=null;
+		try {
+			System.out.println("执行类");
+			ps=cnn.prepareStatement("create table if not exists prison.newsubcopapi select * from prison.subcopapi;");
+			ps2=cnn.prepareStatement("alter table prison.newsubcopapi add method varchar(300) not null default '';");
+			ps3=cnn.prepareStatement("alter table prison.newsubcopapi add plan varchar(300) not null default '';");
+			ps4=cnn.prepareStatement("ALTER TABLE prison.newsubcopapi CONVERT TO CHARACTER SET utf8mb4;");
+			System.out.println(ps.execute());
+			System.out.println(ps2.execute());
+			System.out.println(ps3.execute());
+			System.out.println(ps4.execute());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("初始化建表失败");
+			return 0;
+		}
+		return 1;
+	}
+
+	@Override
+	public int creatTableCopa10() {
+		SqlSession session = factory.openSession();
+		Connection cnn=session.getConnection();
+		PreparedStatement ps=null;
+		PreparedStatement ps2=null;
+		PreparedStatement ps3=null;
+		PreparedStatement ps4=null;
+		try {
+			System.out.println("执行类");
+			ps=cnn.prepareStatement("create table if not exists prison.newsubcopapi10 select * from prison.subcopapi10;");
+			ps2=cnn.prepareStatement("alter table prison.newsubcopapi10 add method varchar(300) not null default '';");
+			ps3=cnn.prepareStatement("alter table prison.newsubcopapi10 add plan varchar(300) not null default '';");
+			ps4=cnn.prepareStatement("ALTER TABLE prison.newsubcopapi10 CONVERT TO CHARACTER SET utf8mb4;");
+			System.out.println(ps.execute());
+			System.out.println(ps2.execute());
+			System.out.println(ps3.execute());
+			System.out.println(ps4.execute());
+		} catch (SQLException e) {
+			System.out.println("初始化建表失败");
+			// TODO Auto-generated catch block
+			return 0;
+		}
+		return 1;
+	}
+
+
+	@Override
+	public User selOldByCODE(long CODE) {
+		SqlSession session = factory.openSession();
+		User u=session.selectOne("a.b.selOldByCODE",CODE);
+		if(u!=null) {
+			session.commit();
+		}else {
+			session.rollback();
+		}
+		session.close();
+		return u;
+	}
+
+	@Override
+	public User10 selOld10ByCODE(long CODE) {
+		SqlSession session = factory.openSession();
+		User10 u=session.selectOne("a.b.selOldByCODE10",CODE);
+		if(u!=null) {
+			session.commit();
+		}else {
+			session.rollback();
+		}
+		session.close();
+		return u;
+	}
+
+	@Override
+	public int insertCopa(User u) {
+		SqlSession session = factory.openSession();
+		int index=session.update("a.b.insertCopa",u);
+		if(index==1) {
+			session.commit();
+		}else {
+			session.rollback();
+		}
+		session.close();
+		return index;
+	}
+	public static void main(String[] args) {
+		User u=new User();
+		u.setCODE(0);
+		u.setMethod("test");
+		LoginDaoImpl l=new LoginDaoImpl();
+		l.insertCopa(u);
+	}
+
+	@Override
+	public int insertCopa10(User10 u) {
+		SqlSession session = factory.openSession();
+		int index=session.update("a.b.insertCopa10",u);
+		if(index==1) {
+			session.commit();
+		}else {
+			session.rollback();
+		}
+		session.close();
+		return index;
+	}
 }

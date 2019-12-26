@@ -5,10 +5,10 @@
     
  <mapper namespace="a.b">
  	<select id="selIds1"  resultType="long">
-		SELECT p.code from subcopapi p inner join infotesttotal i on p.code=i.subtableid inner join jbxx_ziranxinxi y on y.zf_bh=i.clientinfoid;
+		SELECT p.code from newsubcopapi p inner join infotesttotal i on p.code=i.subtableid inner join jbxx_ziranxinxi y on y.zf_bh=i.clientinfoid;
  	</select>
  	<select id="selIds2"  resultType="long">
-		SELECT p.code from subcopapi p inner join infotesttotal i on p.code=i.subtableid inner join yzgl_zfjfkhxx y on y.zf_bh=i.clientinfoid;
+		SELECT p.code from newsubcopapi p inner join infotesttotal i on p.code=i.subtableid inner join yzgl_zfjfkhxx y on y.zf_bh=i.clientinfoid;
  	</select>
  	
 </mapper>
