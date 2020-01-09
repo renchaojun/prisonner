@@ -109,14 +109,16 @@ public class mainServlet extends HttpServlet {
 				u2=ls.selOld10ByCODE(CODE);
 				if(u2!=null) {
 					u2=getMethod(u2);
-					info.setSubtableid(u2.getCODE()); //用id查基本信息
-					info=ls.selByInfo(info);
-					kaohe=ls.selByBianhao1(info);
-					naturalinfo=ls.selByBianhao2(info);
-					resp.getWriter().write(CreatJson.createJson(u,path,kaohe,naturalinfo));
-					ls.insertCopa10(u2);
-					logger.debug("找到新犯人，更新表，编号为："+u2.getCODE());
-					return;
+					if(u2!=null) {
+						info.setSubtableid(u2.getCODE()); //用id查基本信息
+						info=ls.selByInfo(info);
+						kaohe=ls.selByBianhao1(info);
+						naturalinfo=ls.selByBianhao2(info);
+						resp.getWriter().write(CreatJson.createJson(u,path,kaohe,naturalinfo));
+						ls.insertCopa10(u2);
+						logger.debug("找到新犯人，更新表，编号为："+u2.getCODE());
+						return;
+					}
 				}
 			}
 //			resp.sendError(HttpServletResponse.SC_NOT_FOUND);

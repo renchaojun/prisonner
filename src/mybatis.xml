@@ -27,6 +27,5 @@
  	 <mapper resource="com/chaojun/mapper/NaturalInfoMapper.xml"/>
  	 <mapper resource="com/chaojun/mapper/idsMapper.xml"/>
  	 <mapper resource="com/chaojun/mapper/huanhuan.xml"/>
- 	 <mapper resource="com/chaojun/mapper/Dao.xml"/>
   </mappers>
 </configuration>
