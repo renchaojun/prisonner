@@ -14,18 +14,15 @@
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
         <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
- 				<property name="url" value="jdbc:mysql://39.100.76.126:3306/prison?useUnicode=true&amp;characterEncoding=UTF-8"/>
+        <!-- useUnicode=true&amp;characterEncoding=UTF-8; -->
+ 				<property name="url" value="jdbc:mysql://47.105.51.4:3306/prison_t?serverTimezone=UTC&amp;"/>
  				<property name="username" value="root"/>
- 				<property name="password" value="kb318"/>
+ 				<property name="password" value="Lanhai@123"/>
  	 </dataSource>
     </environment>
   </environments>
   <mappers>
- 	 <mapper resource="com/chaojun/mapper/UserMapper.xml"/>
- 	 <mapper resource="com/chaojun/mapper/InfoMapper.xml"/>
- 	 <mapper resource="com/chaojun/mapper/KaoheTableMapper.xml"/>
- 	 <mapper resource="com/chaojun/mapper/NaturalInfoMapper.xml"/>
- 	 <mapper resource="com/chaojun/mapper/idsMapper.xml"/>
- 	 <mapper resource="com/chaojun/mapper/huanhuan.xml"/>
+ 	 
+ 	 <mapper resource="com/chaojun/mapper/TotalData.xml"/>
   </mappers>
 </configuration>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.chaojun.flag.Flag;
 import com.chaojun.flag.Flag2;
+import com.chaojun.flag.FlagTotalData;
 
 /**
  * Servlet implementation class InitServlet
@@ -18,8 +19,9 @@ import com.chaojun.flag.Flag2;
 public class InitServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Flag.culflag();
-		Flag2.culflag();
+//		Flag.culflag();
+//		Flag2.culflag();
+		FlagTotalData.culflag();
 		//设置请求编码格式
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
